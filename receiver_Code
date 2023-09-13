@@ -26,9 +26,9 @@ void loop()
   if(current_state && !previous_state)
   {
     startt=millis();
-    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(LED_PIN, LOW);
     delay(PERIOD*1.5);
-    char prev_char='a';
+    char prev_char='0';
     while(1){
       char ch = get_byte();
       if(ch=='\n'){
@@ -39,7 +39,7 @@ void loop()
           int bitss = message.length()*8;
           Serial.print("Total bits transferred : ");
           Serial.println(bitss);
-          //unsigned time_taken = millis()-startt;/
+         // unsigned time_taken = millis()-startt;
           int time_taken = PERIOD*bitss + (bitss/3)*PERIOD + PERIOD*2;
           
           //              (for every bit)    (hold time)      (for start bit and at bit no 2)
@@ -67,7 +67,7 @@ void loop()
 bool get_ldr()
 {
   int voltage = analogRead(LDR_PIN);
-  return voltage > THRESHOLD ? false : true;
+  return voltage > THRESHOLD ? true : false;
 }
 
 char get_byte()
@@ -76,7 +76,7 @@ char get_byte()
   int pov=128;
   for(int i = 0; i < 8; i++)
   {
-   bool volt = analogRead(LDR_PIN)> THRESHOLD ? false : true;
+   bool volt = analogRead(LDR_PIN)> THRESHOLD ? true : false;
    Serial.print(volt);
    res += volt*pov;
    pov/=2;
