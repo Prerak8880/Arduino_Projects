@@ -28,7 +28,7 @@ void loop()
     startt=millis();
     digitalWrite(LED_PIN, LOW);
     delay(PERIOD*1.5);
-    char prev_char='0';
+    char prev_char='a';
     while(1){
       char ch = get_byte();
       if(ch=='\n'){
@@ -67,7 +67,7 @@ void loop()
 bool get_ldr()
 {
   int voltage = analogRead(LDR_PIN);
-  return voltage > THRESHOLD ? true : false;
+  return voltage > THRESHOLD ? false : true;
 }
 
 char get_byte()
@@ -76,7 +76,7 @@ char get_byte()
   int pov=128;
   for(int i = 0; i < 8; i++)
   {
-   bool volt = analogRead(LDR_PIN)> THRESHOLD ? true : false;
+   bool volt = analogRead(LDR_PIN)> THRESHOLD ? false : true;
    Serial.print(volt);
    res += volt*pov;
    pov/=2;
