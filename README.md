@@ -1,1 +1,1 @@
-# Data_Transmission_usingg_LiFi
+# Data_Transmission_using_LiFi
