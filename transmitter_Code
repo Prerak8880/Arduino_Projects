@@ -28,7 +28,7 @@ void loop()
 }
 
 void sendMessage(String str){
-  int str_length = string.length();
+  int str_length = str.length();
   Serial.println("Initiated");
   digitalWrite(LED_PIN, HIGH);
   delay(PERIOD);
