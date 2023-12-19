@@ -4,7 +4,7 @@
 String inp="";       // string to take input
 int str_length;
 
-void setup() 
+void setup()
 {
   pinMode(LED_PIN, OUTPUT);
   Serial.begin(9600);          //9600 bits per second
